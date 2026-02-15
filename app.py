@@ -13,6 +13,10 @@ from datetime import datetime
 
 # Download only first time
 import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 try:
     nltk.data.find('tokenizers/punkt')
