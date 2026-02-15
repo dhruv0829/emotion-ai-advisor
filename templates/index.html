@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Emotion Wellness</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="main-container">
+
+    <div class="card">
+        <h1>AI Mood Advisor</h1>
+
+        <form method="POST">
+            <textarea name="text" placeholder="How are you feeling today?" required></textarea>
+            <button type="submit">Analyze Mood</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result" style="border-left: 6px solid {{ color }}">
+            <h2>{{ emoji }} {{ prediction.capitalize() }}</h2>
+            <p>{{ advice }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if history %}
+    <div class="history-card">
+        <h3>Recent Moods</h3>
+        {% for row in history %}
+        <div class="history-item">
+            <span class="history-date">{{ row[0][:19] }}</span>
+            <p>{{ row[2].capitalize() }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
